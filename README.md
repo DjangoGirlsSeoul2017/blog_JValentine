@@ -5,7 +5,7 @@
 
 ### 작성자 구조
 |칼럼명|타입|용도|
-|---|---|--|
+|---|---|---|
 |`id`|VARCHAR(128) NOT NULL|아이디|
 |`password`|VARCHAR(512) NOT NULL|비밀번호|
 |`writer_name`|VARCHAR(128) NOT NULL|필명|
