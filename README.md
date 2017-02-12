@@ -1,6 +1,6 @@
 # Django Study Project 
- 이 저장소는 장고를 공부하기 위헤 만든 곳입니다.
- 
+이 저장소는 장고를 공부하기 위해 만든 곳입니다.
+
 ## 모델 구조
 
 ### 작성자 구조
@@ -13,7 +13,6 @@
 |`phone`|VARCHAR(64) NOT NULL|Mobile 번호|
 |`create_date`|DATETIME NOT NULL|등록 날짜|
 |`lastlogin_date`|DATETIME|마지막 로그인 날짜|
-
 
 ### Post 구조
 |칼럼명|타입|용도|
