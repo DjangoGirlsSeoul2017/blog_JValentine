@@ -7,7 +7,7 @@ from .models import BlogEmailUser
 
 # Register your models here.
 
-class BlogEmailUserAdmin(EmailUserAdmin):
+class BlogEmailUserAdmin(UserAdmin):
     """EmailUser Admin model."""
 
     """

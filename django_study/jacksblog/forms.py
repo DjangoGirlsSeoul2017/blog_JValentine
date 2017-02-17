@@ -1,10 +1,10 @@
 """EmailUser forms."""
-import django
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.utils.translation import ugettext_lazy as _
 
+import django
 
 class EmailUserCreationForm(forms.ModelForm):
 
@@ -16,6 +16,7 @@ class EmailUserCreationForm(forms.ModelForm):
     error_messages = {
         'duplicate_email': _("A user with that email already exists."),
         'password_mismatch': _("The two password fields didn't match."),
+        'duplicate_id': _("A user with that id already exists."),
     }
 
     password1 = forms.CharField(
@@ -28,7 +29,7 @@ class EmailUserCreationForm(forms.ModelForm):
 
     class Meta:  # noqa: D101
         model = get_user_model()
-        fields = ('email',)
+        fields = ('id',)
 
     def clean_email(self):
         """
@@ -38,14 +39,14 @@ class EmailUserCreationForm(forms.ModelForm):
         """
         # Since EmailUser.email is unique, this check is redundant,
         # but it sets a nicer error message than the ORM. See #13147.
-        email = self.cleaned_data["email"]
+        email = self.cleaned_data["id"]
         try:
             get_user_model()._default_manager.get(email=email)
         except get_user_model().DoesNotExist:
             return email
         raise forms.ValidationError(
-            self.error_messages['duplicate_email'],
-            code='duplicate_email',
+            self.error_messages['duplicate_id'],
+            code='duplicate_id',
         )
 
     def clean_password2(self):

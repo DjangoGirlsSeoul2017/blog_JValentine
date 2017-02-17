@@ -10,7 +10,7 @@
 |`password`|VARCHAR(512) NOT NULL|비밀번호|
 |`writer_name`|VARCHAR(128) NOT NULL|필명|
 |`email`|VARCHAR(256) NOT NULL|E-Mail 주소|
-|`phone`|VARCHAR(64) NOT NULL|Mobile 번호|
+|`phone`|VARCHAR(64)|Mobile 번호|
 |`create_date`|DATETIME NOT NULL|등록 날짜|
 |`lastlogin_date`|DATETIME|마지막 로그인 날짜|
 
