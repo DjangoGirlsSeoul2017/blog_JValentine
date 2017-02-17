@@ -186,3 +186,6 @@ ENV/
 
 #venv
 django_venv/*
+
+#not insert .idea
+.idea/*
