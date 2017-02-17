@@ -1,14 +1,14 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth import get_user_model
-from custom_user.models import AbstractEmailUser
+from django.contrib.auth.models import (
+    AbstractBaseUser, BaseUserManager, PermissionsMixin)
 
 user = get_user_model().objects.get(email="jackvalentine@jackarchive.com")
 
-class BlogEmailUser(AbstractEmailUser):
-    """
-    Example of an EmailUser with a new field date_of_birth
-    """
+
+class AbstractEmailUser(AbstractBaseUser, PermissionsMixin):
+
     """
     Create and save an EmailUser with the given email and password.
     :param str id: user id_email
@@ -29,9 +29,16 @@ class BlogEmailUser(AbstractEmailUser):
     create_date = models.DateTimeField(
         blank=True, null=True
     )
-    lastlogin_date = models.DateTimeField(
-        blank=True, null=True
-    )
+
+
+class BlogEmailUser(AbstractBaseUser, PermissionsMixin):
+    """
+   Concrete class of AbstractEmailUser.
+   Use this if you don't need to extend EmailUser.
+   """
+    class Meta(AbstractEmailUser.Meta):
+        swappable = 'AUTH_USER_MODEL'
+
 
 class Post(models.Model):
     id = models.ForeignKey('auth.User')
